@@ -32,9 +32,9 @@ const Settings = () => {
                 {state.savedLocations.length > 0 ? (
                     state.savedLocations.map((location) => (
                         <div key={location}>
-                            <a className="Settings__city-name" onClick={() => getWeather(location)}>
+                            <button className="Settings__city-name" onClick={() => getWeather(location)}>
                                 {location.split(",").join(", ")}
-                            </a>
+                            </button>
                             <button onClick={() => dispatch({ type: "removeLocation", payload: location })}>
                                 <DeleteIcon />
                             </button>
