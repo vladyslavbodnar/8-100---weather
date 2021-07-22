@@ -5,7 +5,7 @@ const SearchBar = ({ cities }) => {
     const [inputValue, setInputValue] = useState("");
     const [citiesValue, setCitiesValue] = useState([]);
 
-    const [state, dispatch] = useContext(StateContext);
+    const [, dispatch] = useContext(StateContext);
 
     const setLocation = (e) => {
         if (e.key === "Enter") {
@@ -30,8 +30,8 @@ const SearchBar = ({ cities }) => {
     return (
         <div>
             <input type="text" value={inputValue} onChange={(e) => changeInput(e)} onKeyDown={(e) => setLocation(e)} />
-            {citiesValue.map((city) => (
-                <h3 onClick={() => setLocation({ key: "Enter", target: { value: `${city.name},${city.countryCode}` } })}>
+            {citiesValue.map((city, i) => (
+                <h3 key={i} onClick={() => setLocation({ key: "Enter", target: { value: `${city.name},${city.countryCode}` } })}>
                     {city.name}, {city.countryCode}
                 </h3>
             ))}
