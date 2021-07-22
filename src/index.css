@@ -12,7 +12,7 @@ body {
 
 .Weather__future-predictions {
     display: flex;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .Settings__city-name {
