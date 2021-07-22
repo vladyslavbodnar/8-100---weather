@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { StateContext } from "../App";
 import SearchBar from "./SearchBar";
 
@@ -7,17 +7,13 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import CallMadeIcon from "@material-ui/icons/CallMade";
 
-// cities db
-import { City } from "country-state-city";
-
 const API_KEY = "cc4ab46be8c995ffafc858ed7cd26383";
 
-const Weather = () => {
+const Weather = ({ cities }) => {
     const [state, dispatch] = useContext(StateContext);
     const [locationWeather, setLocationWeather] = useState(null);
     const [isSaved, setIsSaved] = useState(null);
     const [statusText, setStatusText] = useState("");
-    const cities = useMemo(() => City.getAllCities(), []);
 
     const fetchWeather = (data) => {
         setStatusText("Searching..");
@@ -198,21 +194,19 @@ const Weather = () => {
                                 if (data === locationWeather.list[0]) return;
 
                                 return (
-                                    <div>
-                                        <p>
-                                            {new Date(data["dt_txt"]).getHours() === 0 ? (
-                                                <p>
-                                                    {new Date(data["dt_txt"]).getDate()}/{new Date(data["dt_txt"]).getMonth() + 1}
-                                                </p>
-                                            ) : (
-                                                <p>{new Date(data["dt_txt"]).getHours()}:00</p>
-                                            )}
-                                        </p>
-                                        <img />
-                                        <p>Here must be an icon {data.weather[0].main}</p>
+                                    <div key={data["dt_txt"]}>
+                                        {new Date(data["dt_txt"]).getHours() === 0 ? (
+                                            <p>
+                                                {new Date(data["dt_txt"]).getDate()}/{new Date(data["dt_txt"]).getMonth() + 1}
+                                            </p>
+                                        ) : (
+                                            <p>{new Date(data["dt_txt"]).getHours()}:00</p>
+                                        )}
+
+                                        <img alt={data.weather[0].main}/>
 
                                         <p>
-                                            {data.main.temp}°{state.temperatureUnit}
+                                            {Math.round(data.main.temp)}°{state.temperatureUnit}
                                         </p>
                                         <p>
                                             <CallMadeIcon

@@ -1,8 +1,11 @@
-import React, { useReducer } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import React, { useMemo, useReducer } from "react";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Settings from "./components/Settings";
 import Weather from "./components/Weather";
+
+// cities db
+import { City } from "country-state-city";
 
 export const StateContext = React.createContext();
 
@@ -36,13 +39,16 @@ function reducer(state, action) {
 function App() {
     const [state, dispatch] = useReducer(reducer, initialState);
 
+    const cities = useMemo(() => City.getAllCities().sort((cityA, cityB) => (cityA.name > cityB.name) ? 1 : -1), []);
+
+
     return (
         <StateContext.Provider value={[state, dispatch]}>
             <div className="App">
                 <Router>
                     <Switch>
                         <Route path="/" exact>
-                            <Weather />
+                            <Weather cities={cities}/>
                         </Route>
                         <Route path="/settings">
                             <Settings />
