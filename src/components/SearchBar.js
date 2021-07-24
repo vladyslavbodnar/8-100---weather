@@ -23,7 +23,7 @@ const SearchBar = ({ cities }) => {
             return;
         }
 
-        const citiesValues = cities.filter((city) => city.name.startsWith(e.target.value));
+        const citiesValues = cities.filter((city) => city.name.startsWith(e.target.value)).slice(0, 20);
         setCitiesValue(citiesValues);
     };
 
