@@ -39,7 +39,7 @@ function reducer(state, action) {
 function App() {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const cities = useMemo(() => City.getAllCities().sort((cityA, cityB) => (cityA.name > cityB.name) ? 1 : -1), []);
+    const cities = useMemo(() => City.getAllCities());
 
 
     return (
