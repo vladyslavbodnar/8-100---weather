@@ -101,9 +101,6 @@ const Weather = ({ cities }) => {
                 case "Thunderstorm":
                     emoji = "🌩️";
                     break;
-                case "Thunderstorm":
-                    emoji = "";
-                    break;
                 case "Drizzle":
                     emoji = "🌧️";
                     break;
@@ -192,7 +189,7 @@ const Weather = ({ cities }) => {
                             locationWeather.list.map((data) => {
                                 // return on current weather
                                 if (data === locationWeather.list[0]) return;
-
+                                console.log(data.weather[0].main);
                                 return (
                                     <div key={data["dt_txt"]}>
                                         {new Date(data["dt_txt"]).getHours() === 0 ? (
@@ -203,7 +200,14 @@ const Weather = ({ cities }) => {
                                             <p>{new Date(data["dt_txt"]).getHours()}:00</p>
                                         )}
 
-                                        <img alt={data.weather[0].main}/>
+                                        
+                                        
+                                        {data.weather[0].main === "Rain" && <p>Rain</p>}
+                                        {data.weather[0].main === "Snow" && <p>Snow</p>}
+                                        {data.weather[0].main === "Thunderstorm" && <p>Thunderstorm</p>}
+                                        {data.weather[0].main === "Drizzle" && <p>Drizzle</p>}
+                                        {data.weather[0].main === "Clouds" && <p>Clouds</p>}
+                                        {data.weather[0].main === "Clear" && <p>Clear</p>}
 
                                         <p>
                                             {Math.round(data.main.temp)}°{state.temperatureUnit}
