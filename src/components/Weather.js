@@ -176,11 +176,19 @@ const Weather = ({ cities }) => {
 
                         <h3>
                             Sunrise: {new Date(locationWeather.city.sunrise * 1000).getHours()}:
-                            {new Date(locationWeather.city.sunrise * 1000).getMinutes()}
+                            {
+                            String(new Date(locationWeather.city.sunrise * 1000).getMinutes()).length === 1 ?
+                            `0${new Date(locationWeather.city.sunrise * 1000).getMinutes()}` :
+                            new Date(locationWeather.city.sunrise * 1000).getMinutes()
+                            }
                         </h3>
                         <h3>
                             Sunset: {new Date(locationWeather.city.sunset * 1000).getHours()}:
-                            {new Date(locationWeather.city.sunset * 1000).getMinutes()}
+                            {
+                            String(new Date(locationWeather.city.sunset * 1000).getMinutes()).length === 1 ?
+                            `0${new Date(locationWeather.city.sunset * 1000).getMinutes()}` :
+                            new Date(locationWeather.city.sunset * 1000).getMinutes()
+                            }
                         </h3>
                     </div>
 
@@ -189,7 +197,7 @@ const Weather = ({ cities }) => {
                             locationWeather.list.map((data) => {
                                 // return on current weather
                                 if (data === locationWeather.list[0]) return;
-                                console.log(data.weather[0].main);
+                                
                                 return (
                                     <div key={data["dt_txt"]}>
                                         {new Date(data["dt_txt"]).getHours() === 0 ? (
