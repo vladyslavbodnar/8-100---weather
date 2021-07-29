@@ -28,8 +28,14 @@ const SearchBar = ({ cities }) => {
     };
 
     return (
-        <div>
-            <input type="text" value={inputValue} onChange={(e) => changeInput(e)} onKeyDown={(e) => setLocation(e)} />
+        <div className="SearchBar">
+            <input
+                type="text"
+                placeholder="Search location..."
+                value={inputValue}
+                onChange={(e) => changeInput(e)}
+                onKeyDown={(e) => setLocation(e)}
+            />
             {citiesValue.map((city, i) => (
                 <h3 key={i} onClick={() => setLocation({ key: "Enter", target: { value: `${city.name},${city.countryCode}` } })}>
                     {city.name}, {city.countryCode}

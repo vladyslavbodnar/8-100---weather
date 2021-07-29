@@ -10,11 +10,55 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.Weather__future-predictions {
+.Weather__icon {
+    max-width: 50px;
+}
+
+.Weather__humidity-icon {
+    max-width: 50px;
+}
+
+.Weather__sun-icons {
+    max-width: 50px;
+}
+
+.future-predictions {
     display: flex;
     overflow: auto;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.future-predictions::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.future-predictions {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 .Settings__city-name {
     text-decoration: underline;
 }
+
+.future-predictions__weather-icon {
+    max-width: 15px;
+}
+
+.Navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Navbar__link {
+    text-decoration: none;
+}
+
+.SearchBar {
+}
+
+

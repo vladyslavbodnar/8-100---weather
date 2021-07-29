@@ -39,8 +39,7 @@ function reducer(state, action) {
 function App() {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const cities = useMemo(() => City.getAllCities());
-
+    const cities = useMemo(() => City.getAllCities(), []);
 
     return (
         <StateContext.Provider value={[state, dispatch]}>
@@ -48,7 +47,7 @@ function App() {
                 <Router>
                     <Switch>
                         <Route path="/" exact>
-                            <Weather cities={cities}/>
+                            <Weather cities={cities} />
                         </Route>
                         <Route path="/settings">
                             <Settings />

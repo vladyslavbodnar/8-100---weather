@@ -2,10 +2,19 @@ import { useContext, useEffect, useState } from "react";
 import { StateContext } from "../App";
 import SearchBar from "./SearchBar";
 
-// material icons
+// icons
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import CallMadeIcon from "@material-ui/icons/CallMade";
+import rain from "../assets/images/rain.png";
+import snow from "../assets/images/snow.png"
+import thunderstorm from "../assets/images/thunderstorm.png"
+import drizzle from "../assets/images/drizzle.png"
+import clouds from "../assets/images/clouds.png"
+import sun from "../assets/images/sun.png";
+import sunrise from "../assets/images/sunrise.png";
+import sunset from "../assets/images/sunset.png";
+import humidity from "../assets/images/humidity.png";
 
 const API_KEY = "cc4ab46be8c995ffafc858ed7cd26383";
 
@@ -145,7 +154,8 @@ const Weather = ({ cities }) => {
     };
 
     return (
-        <div>
+        <div className="Weather">
+            
             <SearchBar cities={cities} />
             {locationWeather ? (
                 <div>
@@ -154,12 +164,21 @@ const Weather = ({ cities }) => {
                     </h2>
                     <div>
                         {/* main weather */}
+                        {locationWeather.list[0].weather[0].main === "Rain" && <img className="Weather__icon" src={rain} alt="Rain" />}
+                        {locationWeather.list[0].weather[0].main === "Snow" && <img className="Weather__icon" src={snow} alt="Snow" />}
+                        {locationWeather.list[0].weather[0].main === "Thunderstorm" && <img className="Weather__icon" src={thunderstorm} alt="Thunderstorm" />}
+                        {locationWeather.list[0].weather[0].main === "Drizzle" && <img className="Weather__icon" src={drizzle} alt="Drizzle" />}
+                        {locationWeather.list[0].weather[0].main === "Clouds" && <img className="Weather__icon" src={clouds} alt="Clouds" />}
+                        {locationWeather.list[0].weather[0].main === "Clear" && <img className="Weather__icon" src={sun} alt="Sun" />}
+
                         <p>{locationWeather.list[0].weather[0].description}</p>
-                        <button onClick={() => saveUnsaveLocation()}>{isSaved ? <FavoriteIcon /> : <FavoriteBorderIcon />}</button>
+                        <button className="Weather__button" onClick={() => saveUnsaveLocation()}>{isSaved ? <FavoriteIcon /> : <FavoriteBorderIcon />}</button>
                         <p>
                             {Math.round(locationWeather.list[0].main.temp)}°{state.temperatureUnit}
                         </p>
-                        <p>Humidity: {locationWeather.list[0].main.humidity}%</p>
+                        <div>
+                            <img src={humidity} alt="Humidity" className="Weather__humidity-icon"/>
+                            {locationWeather.list[0].main.humidity}%</div>
                         <p>
                             <CallMadeIcon
                                 style={{
@@ -174,30 +193,32 @@ const Weather = ({ cities }) => {
 
                         <p>{locationWeather.list[0]["dx_txt"]}</p>
 
-                        <h3>
-                            Sunrise: {new Date(locationWeather.city.sunrise * 1000).getHours()}:
+                        <div>
+                            <img src={sunrise} alt="Sunrise" className="Weather__sun-icons" />
+                            {new Date(locationWeather.city.sunrise * 1000).getHours()}:
                             {
-                            String(new Date(locationWeather.city.sunrise * 1000).getMinutes()).length === 1 ?
-                            `0${new Date(locationWeather.city.sunrise * 1000).getMinutes()}` :
-                            new Date(locationWeather.city.sunrise * 1000).getMinutes()
+                                String(new Date(locationWeather.city.sunrise * 1000).getMinutes()).length === 1 ?
+                                `0${new Date(locationWeather.city.sunrise * 1000).getMinutes()}` :
+                                new Date(locationWeather.city.sunrise * 1000).getMinutes()
                             }
-                        </h3>
-                        <h3>
-                            Sunset: {new Date(locationWeather.city.sunset * 1000).getHours()}:
+                        </div>
+                        <div>
+                            <img src={sunset} alt="Sunset" className="Weather__sun-icons" />
+                            {new Date(locationWeather.city.sunset * 1000).getHours()}:
                             {
-                            String(new Date(locationWeather.city.sunset * 1000).getMinutes()).length === 1 ?
-                            `0${new Date(locationWeather.city.sunset * 1000).getMinutes()}` :
-                            new Date(locationWeather.city.sunset * 1000).getMinutes()
+                                String(new Date(locationWeather.city.sunset * 1000).getMinutes()).length === 1 ?
+                                `0${new Date(locationWeather.city.sunset * 1000).getMinutes()}` :
+                                new Date(locationWeather.city.sunset * 1000).getMinutes()
                             }
-                        </h3>
+                        </div>
                     </div>
 
-                    <div className="Weather__future-predictions">
+                    <div className="Weather__future-predictions future-predictions">
                         {locationWeather &&
                             locationWeather.list.map((data) => {
                                 // return on current weather
-                                if (data === locationWeather.list[0]) return;
-                                
+                                if (data === locationWeather.list[0]) return null;
+
                                 return (
                                     <div key={data["dt_txt"]}>
                                         {new Date(data["dt_txt"]).getHours() === 0 ? (
@@ -210,12 +231,12 @@ const Weather = ({ cities }) => {
 
                                         
                                         
-                                        {data.weather[0].main === "Rain" && <p>Rain</p>}
-                                        {data.weather[0].main === "Snow" && <p>Snow</p>}
-                                        {data.weather[0].main === "Thunderstorm" && <p>Thunderstorm</p>}
-                                        {data.weather[0].main === "Drizzle" && <p>Drizzle</p>}
-                                        {data.weather[0].main === "Clouds" && <p>Clouds</p>}
-                                        {data.weather[0].main === "Clear" && <p>Clear</p>}
+                                        {data.weather[0].main === "Rain" && <img className="future-predictions__weather-icon" src={rain} alt="Rain" />}
+                                        {data.weather[0].main === "Snow" && <img className="future-predictions__weather-icon" src={snow} alt="Snow" />}
+                                        {data.weather[0].main === "Thunderstorm" && <img className="future-predictions__weather-icon" src={thunderstorm} alt="Thunderstorm" />}
+                                        {data.weather[0].main === "Drizzle" && <img className="future-predictions__weather-icon" src={drizzle} alt="Drizzle" />}
+                                        {data.weather[0].main === "Clouds" && <img className="future-predictions__weather-icon" src={clouds} alt="Clouds" />}
+                                        {data.weather[0].main === "Clear" && <img className="future-predictions__weather-icon" src={sun} alt="Sun" />}
 
                                         <p>
                                             {Math.round(data.main.temp)}°{state.temperatureUnit}
