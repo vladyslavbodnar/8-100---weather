@@ -1,20 +1,28 @@
 {
   "files": {
-    "main.css": "/8-100---weather/static/css/main.dabd4034.chunk.css",
-    "main.js": "/8-100---weather/static/js/main.7a1569a2.chunk.js",
-    "main.js.map": "/8-100---weather/static/js/main.7a1569a2.chunk.js.map",
+    "main.css": "/8-100---weather/static/css/main.b927e4c2.chunk.css",
+    "main.js": "/8-100---weather/static/js/main.9e3c5607.chunk.js",
+    "main.js.map": "/8-100---weather/static/js/main.9e3c5607.chunk.js.map",
     "runtime-main.js": "/8-100---weather/static/js/runtime-main.68905a74.js",
     "runtime-main.js.map": "/8-100---weather/static/js/runtime-main.68905a74.js.map",
-    "static/js/2.15a995df.chunk.js": "/8-100---weather/static/js/2.15a995df.chunk.js",
-    "static/js/2.15a995df.chunk.js.map": "/8-100---weather/static/js/2.15a995df.chunk.js.map",
+    "static/js/2.ce5442f0.chunk.js": "/8-100---weather/static/js/2.ce5442f0.chunk.js",
+    "static/js/2.ce5442f0.chunk.js.map": "/8-100---weather/static/js/2.ce5442f0.chunk.js.map",
     "index.html": "/8-100---weather/index.html",
-    "static/css/main.dabd4034.chunk.css.map": "/8-100---weather/static/css/main.dabd4034.chunk.css.map",
-    "static/js/2.15a995df.chunk.js.LICENSE.txt": "/8-100---weather/static/js/2.15a995df.chunk.js.LICENSE.txt"
+    "static/css/main.b927e4c2.chunk.css.map": "/8-100---weather/static/css/main.b927e4c2.chunk.css.map",
+    "static/js/2.ce5442f0.chunk.js.LICENSE.txt": "/8-100---weather/static/js/2.ce5442f0.chunk.js.LICENSE.txt",
+    "static/media/clouds.16fae246.png": "/8-100---weather/static/media/clouds.16fae246.png",
+    "static/media/drizzle.9b090d57.png": "/8-100---weather/static/media/drizzle.9b090d57.png",
+    "static/media/humidity.5c27a83f.png": "/8-100---weather/static/media/humidity.5c27a83f.png",
+    "static/media/rain.57bc7802.png": "/8-100---weather/static/media/rain.57bc7802.png",
+    "static/media/snow.2d6abc4c.png": "/8-100---weather/static/media/snow.2d6abc4c.png",
+    "static/media/sun.e084c732.png": "/8-100---weather/static/media/sun.e084c732.png",
+    "static/media/sunset.18a60413.png": "/8-100---weather/static/media/sunset.18a60413.png",
+    "static/media/thunderstorm.93662f1a.png": "/8-100---weather/static/media/thunderstorm.93662f1a.png"
   },
   "entrypoints": [
     "static/js/runtime-main.68905a74.js",
-    "static/js/2.15a995df.chunk.js",
-    "static/css/main.dabd4034.chunk.css",
-    "static/js/main.7a1569a2.chunk.js"
+    "static/js/2.ce5442f0.chunk.js",
+    "static/css/main.b927e4c2.chunk.css",
+    "static/js/main.9e3c5607.chunk.js"
   ]
 }
