@@ -37,7 +37,11 @@ const SearchBar = ({ cities }) => {
                 onKeyDown={(e) => setLocation(e)}
             />
             {citiesValue.map((city, i) => (
-                <h3 key={i} onClick={() => setLocation({ key: "Enter", target: { value: `${city.name},${city.countryCode}` } })}>
+                <h3
+                    key={i}
+                    onClick={() => setLocation({ key: "Enter", target: { value: `${city.name},${city.countryCode}` } })}
+                    style={{cursor: "pointer"}}
+                >
                     {city.name}, {city.countryCode}
                 </h3>
             ))}
